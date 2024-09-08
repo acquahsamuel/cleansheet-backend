@@ -1,4 +1,7 @@
 import { Module } from '@nestjs/common';
+import { SkillModule } from './skill.module';
 
-@Module({})
+@Module({
+  imports: [SkillModule]
+})
 export class SkillsModule {}

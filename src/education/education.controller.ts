@@ -3,7 +3,7 @@ import { EducationService } from './education.service';
 import { CreateEducationDto } from './dto/create-education.dto';
 import { UpdateEducationDto } from './dto/update-education.dto';
 
-@Controller('education')
+@Controller('api/v1/education')
 export class EducationController {
   constructor(private readonly educationService: EducationService) {}
 
