@@ -10,8 +10,7 @@ export class UserController {
   @Post()
   // @UseGuards(jw)
   create(@Body() createUserDto: CreateUserDto) {
-
-    // return this.userService.create(createUserDto);
+    return this.userService.createUser(createUserDto);
   }
 
   @Get()

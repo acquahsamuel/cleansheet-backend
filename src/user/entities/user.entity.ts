@@ -1,45 +1,38 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
-@Schema()
+@Entity()
 export class User {
-  @Prop()
-  userId: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-  @Prop({ required: true, type: String, unique: true })
-  username: string;
-
-  @Prop()
-  password: string;
-
-  @Prop()
-  role: string;
-
-  @Prop()
-  permissions: [];
-
-  @Prop()
-  userDescription: string;
-
-  @Prop()
+  @Column()
   firstname: string;
 
-  @Prop()
+  @Column()
   lastname: string;
 
-  @Prop()
+  @Column()
+  email: string;
+
+  @Column()
+  password: string;
+
+  @Column()
+  role: string;
+
+  @Column()
   photo: string;
 
-  @Prop()
+  @Column()
   phone: string;
 
-  @Prop()
-  authType: string;
-
-  @Prop()
-  updatedAt: Date;
-
-  @Prop()
+  @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date;
+
+  // Automatically update the date when the entity is updated
+  @UpdateDateColumn({ type: 'timestamp' })
+  updatedAt: Date;
 }
 
-export const UserSchema = SchemaFactory.createForClass(User);
+
+
