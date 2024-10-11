@@ -53,26 +53,6 @@ Working Experince details
 
 
 
+ 
 
- // user create account 
-
-  = use id 
-
-
-CV info 
-
-
-  
-
-
-
-  - CV Model  
-  =====
-   name 
-   thumbnail 
-   html 
-   isOnlyForSubscribers 
-   timestamp 
-
-
-   
+   notes 

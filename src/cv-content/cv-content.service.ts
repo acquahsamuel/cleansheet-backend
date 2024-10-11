@@ -28,11 +28,11 @@ export class CvContentService {
     return await this.cvContentRepository.findOneBy({ id });
   }
 
-  update(id: number, updateCvContentDto: UpdateCvContentDto) {
-    return `This action updates a #${id} cvContent`;
+  async update(id: number, updateCvContentDto: UpdateCvContentDto) {
+    return await this.cvContentRepository.update(id, updateCvContentDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} cvContent`;
+  async remove(id: number) {
+     return await this.cvContentRepository.delete(id);
   }
 }

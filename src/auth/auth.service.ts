@@ -1,44 +1,50 @@
 import { Injectable } from '@nestjs/common';
-import { CreateAuthDto } from './dto/create-auth.dto';
-import { UpdateAuthDto } from './dto/update-auth.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { User } from 'src/user/entities/user.entity';
+import * as bcrypt from 'bcrypt';
+import { JwtService } from '@nestjs/jwt';
+
 
 @Injectable()
 export class AuthService {
-  create(createAuthDto: CreateAuthDto) {
-    return 'This action adds a new auth';
+  constructor(
+    @InjectRepository(User) 
+    private readonly authRepository: Repository<User>,
+    private jwtService : JwtService,
+  ) {}
+
+  async register(email: string, password: string) {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = this.authRepository.create({
+      email,
+      password: hashedPassword,
+    });
+    return this.authRepository.save(user);
   }
- 
 
 
-  getUserProfile(){}
-
-
-
-
-  getProfileByUsername(){}
-
-
-
-  findUserByEmail(){}
-
-
-
-  findUserByUserId(){}
-
-
-
-  updateUserRole(){}
-
-
-
-
-  updatePermissions(){}
-
-
-
-
+  async login(email: string, password: string) {
+    const user = await this.findByEmail(email);
+    if (user && await bcrypt.compare(password, user.password)) {
+      const payload = { email: user.email, sub: user.id };
+      return {
+        access_token: this.jwtService.sign(payload),
+      };
+    }
+    throw new Error('Invalid credentials');
+  }
 
   
- 
+  async getUserProfile(id: number) {
+    const user = await this.authRepository.findOne({ where: { id } });
+    if (!user) {
+      throw new Error('User not found');
+    }
+    return user;
+  }
 
+  async findByEmail(email: string): Promise<User | undefined> {
+    return await this.authRepository.findOne({ where: { email } });
+  }
 }

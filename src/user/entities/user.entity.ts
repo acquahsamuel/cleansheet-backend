@@ -11,10 +11,10 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ nullable: true })
   firstname: string;
 
-  @Column()
+  @Column({ nullable: true })
   lastname: string;
 
   @Column()
@@ -23,14 +23,17 @@ export class User {
   @Column()
   password: string;
 
-  @Column()
+  @Column({ default : 'user'})
   role: string;
 
-  @Column()
+  @Column({ nullable: true })
   photo: string;
 
   @Column()
   phone: string;
+
+  @Column({ default: false })
+  isVerified: boolean;
 
   @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date;
