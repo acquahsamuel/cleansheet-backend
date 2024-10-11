@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { TemplateModule } from './template/template.module';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CvContentModule } from './cv-content/cv-content.module';
 
 
 @Module({
@@ -24,7 +25,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     }),
     AuthModule,
     TemplateModule,
-    UserModule
+    UserModule,
+    CvContentModule
   ],
   controllers: [AppController],
   providers: [AppService],

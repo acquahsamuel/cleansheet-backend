@@ -3,7 +3,7 @@ import { TemplateService } from './template.service';
 import { CreateTemplateDto } from './dto/create-template.dto';
 import { UpdateTemplateDto } from './dto/update-template.dto';
 
-@Controller('template')
+@Controller('api/v1/template')
 export class TemplateController {
   constructor(private readonly templateService: TemplateService) {}
 
