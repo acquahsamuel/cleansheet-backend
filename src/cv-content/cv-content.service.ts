@@ -14,25 +14,32 @@ export class CvContentService {
   ) {}
 
 
-  async create(createCvContentDto: CreateCvContentDto) {
+  async createCV(createCvContentDto: CreateCvContentDto) {
     const template = await this.cvContentRepository.create(createCvContentDto);
     return this.cvContentRepository.save(template);
   }
 
 
-  async findAll() : Promise<CvContent[]> {
-    return  await this.cvContentRepository.find();
+  async findAllCV() : Promise<CvContent[]> {
+    return await this.cvContentRepository.find();
   }
 
-  async findOne(id: number) : Promise<CvContent> {
+  async findCV(id: number) : Promise<CvContent> {
     return await this.cvContentRepository.findOneBy({ id });
   }
 
-  async update(id: number, updateCvContentDto: UpdateCvContentDto) {
+  async updateCV(id: number, updateCvContentDto: UpdateCvContentDto) {
     return await this.cvContentRepository.update(id, updateCvContentDto);
   }
 
-  async remove(id: number) {
+  async deleteCV(id: number) {
      return await this.cvContentRepository.delete(id);
   }
+
+
+ // Get user cv by token
+  async getAllUserCV(){
+    return;
+  }
+
 }

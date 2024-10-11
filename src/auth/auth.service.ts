@@ -15,12 +15,6 @@ export class AuthService {
   ) {}
 
   /**
-   * Register a new user in the database with the given email and password.
-   *
-   * The password is hashed using `bcrypt.hash` with a cost of 10.
-   *
-   * Returns a promise that resolves to the newly created user.
-   *
    * @param email The email of the user to register.
    * @param password The password of the user to register.
    */
@@ -65,7 +59,7 @@ export class AuthService {
   return {
     refresh_token: this.jwtService.sign(payload),
     message: 'Token refreshed successfully',
-  };
+    };
   }
 
 
@@ -82,7 +76,6 @@ export class AuthService {
 
     return { message: 'Reset password link sent to your email' };
   }
-
 
 
 
