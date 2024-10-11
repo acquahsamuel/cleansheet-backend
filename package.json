@@ -36,6 +36,7 @@
     "dotenv": "^16.4.5",
     "mongoose": "^8.5.2",
     "mysql2": "^3.11.3",
+    "nodemailer": "^6.9.15",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.1",

@@ -19,9 +19,11 @@ export class AuthController {
      return this.authService.login(body.email, body.password);
   }
 
+
+
   @Get('profile') 
   async getUserProfile(@Param('id') id: number) {
-    return this.authService.getUserProfile(id);
+    // return this.authService.getUserProfile(id);
   }
 
 
